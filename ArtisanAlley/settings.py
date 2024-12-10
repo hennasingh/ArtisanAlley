@@ -30,7 +30,7 @@ SECRET_KEY = 'django-insecure-@6+)!+#)d6r7x(rab0_1$-j$**k#odj0fqpto*-m6p+q(@&bj9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.path.isfile('env.py') else False
 
-ALLOWED_HOSTS = ['8000-hennasingh-artisanalley-ln2sa72k1fc.ws.codeinstitute-ide.net']
+ALLOWED_HOSTS = ['8000-hennasingh-artisanalley-ln2sa72k1fc.ws.codeinstitute-ide.net', '.herokuapp.com']
 
 
 # Application definition
@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary_storage',
+    'cloudinary',
     'artworks',
 ]
 
