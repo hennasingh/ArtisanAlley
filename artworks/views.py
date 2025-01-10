@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Artworks
 from .forms import ArtworkForm
 
@@ -17,5 +17,27 @@ def artwork(request, pk):
 
 def createArtwork(request):
     form = ArtworkForm()
+
+    if request.method == 'POST':
+        form = ArtworkForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('artworks')
+
     context = {'form': form}
     return render(request, 'artworks/artwork_form.html', context)
+
+
+def updateArtwork(request, pk):
+    artwork = Artworks.objects.get(id=pk)
+    form = ArtworkForm(instance=artwork)
+
+    if request.method == 'POST':
+        form = ArtworkForm(request.POST, instance=artwork)
+        if form.is_valid():
+            form.save()
+            return redirect('artworks')
+
+    context = {'form': form}
+    return render(request, 'artworks/artwork_form.html', context)
+

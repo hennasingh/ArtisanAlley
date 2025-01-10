@@ -6,7 +6,10 @@
 
 <ul>
     {% for artwork in artworks %}
-    <li>Title: <a href="{% url 'artwork' artwork.id %}">{{artwork.title}}</a> --- {{artwork.description}}</li>
+    <li>Title: {{artwork.title}} <a href="{% url 'artwork' artwork.id %}">View</a>
+        <a href="{% url 'update-artwork' artwork.id %}"> Edit</a>
+        <a href=""> Delete </a>
+        --- {{artwork.description}}</li>
     {% endfor %}
 </ul>
 
