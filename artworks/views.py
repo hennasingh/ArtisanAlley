@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import Artworks
 
 # Create your views here.
 
@@ -23,13 +24,10 @@ artworklist = [
 
 def artworks(request):
     # this is how we pass messages/variables to html page
-    page = 'Artworks'
-    context = {'page': page, 'artworks': artworklist}
+    artworks = Artworks.objects.all()
+    context = {'artworks': artworks}
     return render(request, 'artworks/artworks.html', context)
 
 def artwork(request, pk):
-    artworkObj = None
-    for i in artworklist:
-        if i['id'] == pk:
-            artworkObj = i
+    artworkObj = Artworks.objects.get(id=pk)
     return render(request, 'artworks/single-artwork.html', {'artwork': artworkObj})
