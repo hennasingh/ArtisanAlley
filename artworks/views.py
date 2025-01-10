@@ -41,3 +41,11 @@ def updateArtwork(request, pk):
     context = {'form': form}
     return render(request, 'artworks/artwork_form.html', context)
 
+
+def deleteArtwork(request, pk):
+    artwork = Artworks.objects.get(id=pk)
+    if request.method == 'POST':
+        artwork.delete()
+        return redirect('artworks')
+    context = {'object': artwork}
+    return render(request, 'artworks/delete_template.html', context)
