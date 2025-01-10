@@ -1,0 +1,11 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<h1>Add Artwork</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit">
+</form>
+{% endblock %}
