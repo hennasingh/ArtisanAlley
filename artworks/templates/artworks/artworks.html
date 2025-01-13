@@ -1,8 +1,11 @@
 {% extends 'main.html' %}
-
+{% load static %}
 {% block content %}
 
-<h1>Artworks</h1>
+<!-- Hero Section-->
+{% include 'partials/hero-section.html' %}
+
+
 
 <ul>
     {% for artwork in artworks %}

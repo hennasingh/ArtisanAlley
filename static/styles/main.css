@@ -1,0 +1,28 @@
+/* Navbar */
+.navbar {
+  font-weight: 600;
+}
+
+/* Hero section */
+#hero-image {
+  background-image: url(/static/images/hero-image.webp);
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: end;
+  padding: 50px;
+}
+
+.hero-text-container {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+}
+
+.hero-text-container h1 {
+  font-size: 2.5rem;
+}
