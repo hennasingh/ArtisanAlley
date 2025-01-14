@@ -5,6 +5,77 @@
 <!-- Hero Section-->
 {% include 'partials/hero-section.html' %}
 
+<section>
+    <div class="container-fluid text-center mt-4 py-3">
+        <div class="row">
+            <div class="col">
+                <h1>Welcome to Artisan Alley</h1>
+            </div>
+        </div>
+        <div class="row justify-content-center py-3">
+            <div class="col-8 mx-auto px-2">
+                <p>
+                    Welcome to Artisan Ireland, the ultimate directory celebrating the vibrant world of Irish
+                    craftsmanship and
+                    creativity! This platform is dedicated to showcasing the talent and passion of artisans from
+                    every corner of
+                    Ireland. Here, you can:
+                </p>
+                <p>
+                    Discover skilled artists and unique creations that tell stories of Irish heritage and
+                    ingenuity.<br>
+                    Support local craftsmanship by connecting directly with artisans.<br>
+                    Inspire your creativity by exploring the diverse arts and crafts that Ireland has to
+                    offer.
+                </p>
+                <p>
+                    Whether you're an artisan looking to showcase your work or a connoisseur seeking
+                    inspiration, Artisan
+                    Alley is here to bring you closer to the heart of Irish creativity. Together, let’s keep the
+                    spirit of
+                    artistry thriving! Feel free to dive in, explore, and make meaningful connections within our
+                    vibrant
+                    community
+                </p>
+                <p>
+                    Welcome aboard, and thank you for being a part of this journey! 🌈🎭💚
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col justify-content-center">
+                <h1>Artworks</h1>
+            </div>
+        </div>
+        <div class="row mt-5 justify-content-center">
+            {% for artwork in artworks %}
+            <!-- Card -->
+            <div class="col-10 col-md-6 col-xl-3 mb-4">
+                <a href=" {% url 'artwork' artwork.id %}" class="card-link">
+                    <div class="card">
+                        <img src="" class="card-img-top" alt="{{artwork.title}}">
+                        <div class="card-body">
+                            <h4 class="card-title text-truncate">{{artwork.title}}</h4>
+                            <h5 class="card-subtitle mb-2 text-body-secondary">By name</h5>
+                            <p class="card-text">{{artwork.description}}</p>
+                            <div class="row py-2">
+                                <div class="col">
+                                    <i class="fas fa-map-marker-alt p-1"></i>{{artwork.town|capfirst}},
+                                    {{artwork.county|capfirst}}
+                                </div>
+                            </div>
+                            <div class="row">
+                                <h5><i class="fas fa-euro-sign p-1"></i>{{ artwork.price }}</h5>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 
 
 <ul>
