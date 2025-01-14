@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Artworks
 from .forms import ArtworkForm
+from cloudinary.forms import cl_init_js_callbacks  
 
 # Create your views here.
 
@@ -19,7 +20,7 @@ def createArtwork(request):
     form = ArtworkForm()
 
     if request.method == 'POST':
-        form = ArtworkForm(request.POST)
+        form = ArtworkForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('artworks')

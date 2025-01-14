@@ -1,7 +1,13 @@
 from django.forms import ModelForm
+from cloudinary.forms import CloudinaryFileField
 from .models import Artworks
 
 class ArtworkForm(ModelForm):
+    featured_image = CloudinaryFileField()
+    listing_image1 = CloudinaryFileField()
+    listing_image2 = CloudinaryFileField()
+    listing_image3 = CloudinaryFileField()
+
     class Meta:
         model = Artworks
-        fields = '__all__' 
+        fields = ['title', 'description', 'featured_image', 'listing_image1', 'listing_image2', 'listing_image3', 'price', 'town', 'county', 'art_medium', 'tags']

@@ -53,11 +53,16 @@
             <div class="col-10 col-md-6 col-xl-3 mb-4">
                 <a href=" {% url 'artwork' artwork.id %}" class="card-link">
                     <div class="card">
-                        <img src="" class="card-img-top" alt="{{artwork.title}}">
+                        {% if "placeholder" in artwork.featured_image.url %}
+                        <img src="{% static 'images/default-artwork-img.jpg' %}" class="card-img-top artwork-image"
+                            alt="placeholder photo">
+                        {% else %}
+                        <img src="{{ artwork.featured_image.url }}" class="card-img-top artwork-image"
+                            alt="{{artwork.title}}">
+                        {% endif %}
                         <div class="card-body">
                             <h4 class="card-title text-truncate">{{artwork.title}}</h4>
                             <h5 class="card-subtitle mb-2 text-body-secondary">By name</h5>
-                            <p class="card-text">{{artwork.description}}</p>
                             <div class="row py-2">
                                 <div class="col">
                                     <i class="fas fa-map-marker-alt p-1"></i>{{artwork.town|capfirst}},
