@@ -1,5 +1,6 @@
 /* Navbar */
-.navbar {
+.navbar,
+.navbar-brand .nav-link {
   font-weight: 600;
 }
 
@@ -38,7 +39,7 @@
   height: 400px;
 }
 
-#art-tag {
+.text-bg-success {
   background-color: bisque !important;
   color: black !important;
 }

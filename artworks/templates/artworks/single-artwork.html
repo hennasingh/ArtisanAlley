@@ -1,12 +1,42 @@
 {% extends 'main.html' %}
+{% load static %}
 
 {% block content %}
 
-<h1>{{artwork.title}}</h1>
-<hr>
-{% for tag in artwork.tags.all %}
-<span style="border: 1px solid grey">{{tag}}</span>
-{% endfor %}
+<section class="single-artwork">
+    <div class="container-fluid">
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-4 col-xl-3 m-4">
+                {% if "placeholder" in artwork.featured_image.url %}
+                <img src="{% static 'images/default-artwork-img.jpg' %}" class="card-img-top" alt="placeholder photo">
+                {% else %}
+                <img src="{{ artwork.featured_image.url }}" class="card-img-top" alt="{{artwork.title}}">
+                {% endif %}
+            </div>
+            <div class="col-10 col-md-4 col-xl-3 m-4">
+                <h1>{{artwork.title}}</h1>
+                <h3>Artist Name</h3>
+                <h4><i class="fas fa-euro-sign p-1"></i>{{artwork.price}}</h4>
+                <p class="mt-4 ms-1">Art Medium: {{artwork.art_medium}}</p>
+                <p><i class="fas fa-map-marker-alt px-1"></i>{{artwork.town|capfirst}}, {{artwork.county|capfirst}}</p>
+                <div class="row">
+                    {% for tag in artwork.tags.all %}
+                    <div class="col-3">
+                        <span id="art-tag" class="badge text-bg-success p-2 ">
+                            <small>{{tag}}</small>
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+        </div>
+    </div>
+
+</section>
+
 
 <p>{{artwork.description}}</p>
 
