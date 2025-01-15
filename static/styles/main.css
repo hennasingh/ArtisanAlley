@@ -64,3 +64,10 @@ footer {
 footer i {
   font-size: 1.3em;
 }
+
+/* Single-Artwork */
+
+.user-profile {
+  text-decoration: none;
+  color: #000;
+}

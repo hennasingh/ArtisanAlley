@@ -15,7 +15,11 @@
             </div>
             <div class="col-10 col-md-4 col-xl-3 m-4">
                 <h1>{{artwork.title}}</h1>
-                <h3>Artist Name</h3>
+                <a href="#" class="user-profile">
+                    <h3>
+                        Artist Name <span><i class="fas fa-external-link-square-alt"></i></span>
+                    </h3>
+                </a>
                 <h4><i class="fas fa-euro-sign p-1"></i>{{artwork.price}}</h4>
                 <p class="mt-4 ms-1">Art Medium: {{artwork.art_medium}}</p>
                 <p><i class="fas fa-map-marker-alt px-1"></i>{{artwork.town|capfirst}}, {{artwork.county|capfirst}}</p>
@@ -28,15 +32,42 @@
                     </div>
                     {% endfor %}
                 </div>
+                <div class="row justify-content-start my-3">
+                    <div class="col">
+                        <h5>Description</h5>
+                        <p>{{artwork.description}}</p>
+                    </div>
+                </div>
+                <div class="row justify-content-start my-4">
+                    <div class="col-5">
+                        <button type="button" class="btn btn-primary">Contact Artist</button>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-
+        <div class="row justify-content-center">
+            <div class="col-10 col-md-4 col-xl-3 m-4">
+                <div class="row">
+                    <div class="col-3 col-md-1m-4">
+                        {% if artwork.listing_image1 %}
+                        <img src="{{ artwork.listing_image1.url }}" alt="{{artwork.title}}">
+                        {% endif %}
+                    </div>
+                    <div class="col-3 col-md-1m-4">
+                        {% if artwork.listing_image2 %}
+                        <img src="{{ artwork.listing_image2.url }}" alt="{{artwork.title}}">
+                        {% endif %}
+                    </div>
+                    <div class="col-3 col-md-1m-4">
+                        {% if artwork.listing_image3 %}
+                        <img src="{{ artwork.listing_image3.url }}" alt="{{artwork.title}}">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
 </section>
-
-<p>{{artwork.description}}</p>
 
 {% endblock content %}
