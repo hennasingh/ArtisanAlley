@@ -21,7 +21,7 @@
 <body>
 
     <header>
-        <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+        <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="{% url 'artworks' %}">
                     <img src="{% static 'images/logo.webp' %}" alt="" width="40" height="34" class="d-inline-block">
@@ -55,7 +55,31 @@
 
     {% endblock content %}
 
-    <p>FOOTER</p>
+    <!-- Footer -->
+    <footer class="text-center text-lg-center">
+        <div class="container d-flex justify-content-center p-4 border-bottom">
+            <div class="me-5 d-none d-lg-block">
+                <span>Made with <i class="fas fa-heart"></i> by Henna Singh</span>
+            </div>
+            <div id="social-links">
+                <a href="https://www.facebook.com/" target="_blank" class="me-4 text-reset"
+                    aria-label="Link to Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://twitter.com/" target="_blank" class="me-4 text-reset" aria-label="Link to Twitter">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="https://www.instagram.com/" target="_blank" class="me-4 text-reset"
+                    aria-label="Link to Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/" target="_blank" class="me-4 text-reset"
+                    aria-label="Link to LinkedIn">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
 
     <!-- Bootstrap5 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
