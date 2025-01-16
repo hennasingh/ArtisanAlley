@@ -1,6 +1,15 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 /* Navbar */
-.navbar {
+.navbar,
+.navbar-brand .nav-link {
   font-weight: 600;
+  background-color: #4f7077 !important;
+  color: #fff !important;
 }
 
 /* Hero section */
@@ -31,4 +40,62 @@
 
 .card-link {
   text-decoration: none;
+}
+
+.artwork-image {
+  width: 100%;
+  height: 400px;
+}
+
+.text-bg-success {
+  background-color: bisque !important;
+  color: black !important;
+}
+
+span > small {
+  font-weight: 700;
+}
+
+/* Single-Artwork */
+
+.user-profile {
+  text-decoration: none;
+  color: #000;
+}
+
+/* Add Artwork Form*/
+
+.form-container {
+  max-width: 70%;
+  margin: 2rem auto;
+  border: 1px solid #4f7077;
+  box-shadow: 12px 12px 2px 1px #7fb1bc;
+}
+
+.input {
+  min-width: 10rem;
+  width: 100%;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  border: 2px solid #e5e7eb;
+}
+
+input.input[type="checkbox"] {
+  cursor: pointer;
+  display: flex;
+}
+
+/* Footer */
+footer {
+  margin-top: auto;
+  background-color: #4f7077;
+  color: #fff;
+}
+
+#social-links a {
+  text-decoration: none;
+}
+
+footer i {
+  font-size: 1.3em;
 }
