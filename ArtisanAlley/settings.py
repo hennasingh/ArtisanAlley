@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'cloudinary',
     'artworks',
+    'artists.apps.ArtistsConfig',
 ]
 
 MIDDLEWARE = [
