@@ -62,7 +62,7 @@
                         {% endif %}
                         <div class="card-body">
                             <h4 class="card-title text-truncate">{{artwork.title}}</h4>
-                            <h5 class="card-subtitle mb-2 text-body-secondary">By name</h5>
+                            <h5 class="card-subtitle mb-2 text-body-secondary">By {{artwork.profile_owner.name}}</h5>
                             <div class="row py-2">
                                 <div class="col">
                                     <i class="fas fa-map-marker-alt p-1"></i>{{artwork.town|capfirst}},

@@ -3,10 +3,12 @@ import uuid
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 from . import choices
+from artists.models import Profile
 
 # Create your models here.
 
 class Artworks(models.Model):
+    profile_owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
     featured_image = CloudinaryField('image', default='placeholder')
