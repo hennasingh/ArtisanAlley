@@ -86,7 +86,7 @@ body {
 }
 
 .profile-bg {
-  height: 20%;
+  max-height: 20%;
   width: 100%;
 }
 
