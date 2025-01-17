@@ -2,6 +2,8 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  padding: 0;
+  margin: 0;
 }
 
 /* Navbar */
@@ -36,7 +38,7 @@ body {
   font-size: 2.5rem;
 }
 
-/*Hero - Profile Header*/
+/*Hero - Profiles Header*/
 
 .form {
   display: block;
@@ -75,6 +77,27 @@ body {
 
 .profile-section__search > .form input.input--text {
   width: 50rem;
+}
+
+/* Hero - Artist Profile Page*/
+
+.bg-container {
+  position: relative;
+}
+
+.profile-bg {
+  height: 20%;
+  width: 100%;
+}
+
+.artist-img {
+  position: absolute;
+  width: 200px;
+  border-radius: 50%;
+  top: 15%;
+  left: 50%;
+  right: 50%;
+  transform: translateX(-50%);
 }
 
 /* Artworks */

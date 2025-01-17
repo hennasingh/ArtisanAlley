@@ -54,7 +54,7 @@
                 <a href=" {% url 'artwork' artwork.id %}" class="card-link">
                     <div class="card">
                         {% if "placeholder" in artwork.featured_image.url %}
-                        <img src="{% static 'images/default-artwork-img.jpg' %}" class="card-img-top artwork-image"
+                        <img src="{% static 'images/default-artwork.webp' %}" class="card-img-top artwork-image"
                             alt="placeholder photo">
                         {% else %}
                         <img src="{{ artwork.featured_image.url }}" class="card-img-top artwork-image"

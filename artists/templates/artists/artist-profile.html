@@ -1,0 +1,20 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="artist-profile-section">
+    <div class="container-fluid">
+        <div class="row justify-content-center bg-container">
+            <div class="col-10">
+                <img src="{% static 'images/profileBg.webp' %}" alt="abstract acrylic painting" class="profile-bg">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <img src="{{profile.profile_image.url}}" alt="Artist {{profile.name}} photo" class="artist-img">
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
