@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
 from .models import Artworks
 from .forms import ArtworkForm
 from cloudinary.forms import cl_init_js_callbacks  
@@ -15,7 +16,7 @@ def artwork(request, pk):
     artworkObj = Artworks.objects.get(id=pk)
     return render(request, 'artworks/single-artwork.html', {'artwork': artworkObj})
 
-
+@login_required(login_url="login")
 def createArtwork(request):
     form = ArtworkForm()
 
@@ -29,6 +30,7 @@ def createArtwork(request):
     return render(request, 'artworks/artwork_form.html', context)
 
 
+@login_required(login_url="login")
 def updateArtwork(request, pk):
     artwork = Artworks.objects.get(id=pk)
     form = ArtworkForm(instance=artwork)
@@ -43,6 +45,7 @@ def updateArtwork(request, pk):
     return render(request, 'artworks/artwork_form.html', context)
 
 
+@login_required(login_url="login")
 def deleteArtwork(request, pk):
     artwork = Artworks.objects.get(id=pk)
     if request.method == 'POST':
