@@ -90,15 +90,4 @@
     </div>
 </section>
 
-
-<ul>
-    {% for artwork in artworks %}
-    <li>Title: {{artwork.title}} <a href="{% url 'artwork' artwork.id %}">View</a>
-        <a href="{% url 'update-artwork' artwork.id %}"> Edit</a>
-        <a href="{% url 'delete-artwork' artwork.id %}"> Delete </a>
-        --- {{artwork.description}}</li>
-    {% endfor %}
-</ul>
-
-
 {% endblock content %}
