@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'artworks',
     'artists.apps.ArtistsConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [

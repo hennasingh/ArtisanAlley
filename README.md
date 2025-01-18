@@ -59,3 +59,7 @@ This model stores favorites for each profile. It is connected via Foreign Key pr
 5. Tag Model
 
 This model stores tags an artist can add to its artwork.
+
+#### Resources
+
+https://www.youtube.com/watch?v=ynToND_xOAM - Django Widget Tweaks
