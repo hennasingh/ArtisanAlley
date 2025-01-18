@@ -83,10 +83,11 @@ body {
 
 .bg-container {
   position: relative;
+  height: 40vh;
 }
 
 .profile-bg {
-  max-height: 20%;
+  height: 20%;
   width: 100%;
 }
 
