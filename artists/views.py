@@ -82,3 +82,9 @@ def userAccount(request):
 
     context = {'profile':profile, 'artworks': artworks}
     return render(request, 'artists/account.html', context)
+
+
+@login_required(login_url='login')
+def editAccount(request):
+    context = {}
+    return render(request, 'artists/profile_form.html', context)
