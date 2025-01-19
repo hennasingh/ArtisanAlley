@@ -73,3 +73,12 @@ def artistProfile(request, pk):
     profile = Profile.objects.get(id=pk)
     context = {'profile':profile}
     return render(request, 'artists/artist-profile.html', context)
+
+
+@login_required(login_url='login')
+def userAccount(request):
+    profile = request.user.profile
+    artworks = profile.artworks_set.all()
+
+    context = {'profile':profile, 'artworks': artworks}
+    return render(request, 'artists/account.html', context)
