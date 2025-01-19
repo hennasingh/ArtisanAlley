@@ -1,6 +1,8 @@
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
+from cloudinary.forms import CloudinaryFileField
 from django.contrib.auth.models import User
+from .models import Profile
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -10,3 +12,12 @@ class CustomUserCreationForm(UserCreationForm):
         labels = {
             'first_name': 'Name',
         }
+
+
+class ProfileForm(ModelForm):
+    profile_image = CloudinaryFileField()
+
+    class Meta:
+        model = Profile
+        fields = ['name', 'email', 'username', 'location', 'bio', 
+        'short_intro', 'profile_image', 'social_instagram', 'social_website', 'social_facebook' ]
