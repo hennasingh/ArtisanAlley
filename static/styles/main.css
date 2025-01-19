@@ -90,7 +90,7 @@ body {
   width: 50rem;
 }
 
-/* Hero - Artist Profile Page*/
+/* Artist Profile Page*/
 
 .bg-container {
   position: relative;
@@ -110,6 +110,28 @@ body {
   left: 50%;
   right: 50%;
   transform: translateX(-50%);
+}
+
+/* Account Page */
+.account-container {
+  border: 1px solid #4f7077;
+  border-radius: 4px;
+  padding: 6px;
+}
+
+.btn-edit {
+  position: absolute;
+  top: 30%;
+  left: 55%;
+}
+
+.artwork-thumbnail {
+  width: 300px;
+  height: 300px;
+}
+
+.artwork-title a {
+  text-decoration: none;
 }
 
 /* Artworks */
