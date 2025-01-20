@@ -2,11 +2,25 @@
 
 {% block content %}
 
-<h1>Edit Account</h1>
+<section>
+    <div class="form-container">
+        <div class="row justify-content-center">
+            <h1 class="text-center my-4">Edit Account</h1>
+            <div class="col-10 col-md-6 col-xl-4">
+                <form action="{% url 'edit-account' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
 
-<form action="{% url 'edit-account' %}" method="POST" encytype="multipart/form-data">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="Submit">
-</form>
+                    {% for field in form %}
+                    <div class="mb-3">
+                        <label for="formInput#text" class="form-label">{{field.label}}</label>
+                        <p>{{field}}</p>
+                    </div>
+                    {% endfor %}
+
+                    <button type="submit" class="btn btn-primary my-3 px-3">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock content %}
