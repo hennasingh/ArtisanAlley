@@ -1,27 +1,139 @@
 {% extends 'main.html' %}
 {% load cloudinary %}
-
+{% load widget_tweaks %}
 {% block content %}
 
-<section>
-    <div class="form-container">
+<section class="artworkForm-section">
+    <div class="container">
         <div class="row justify-content-center">
-            <h1 class="text-center my-4">Add Artwork</h1>
-            <div class="col-10 col-md-6 col-xl-4">
-                <form action="" method="POST" enctype="multipart/form-data">
+            <div class="col-10 text-center my-5 p-4 form-container">
+                <form class="form" method="POST" enctype="multipart/form-data" id="artwork-form">
                     {% csrf_token %}
+                    <div class="row justify-content-center">
+                        {% if page == 'edit' %}
+                        <h1>Edit Artwork</h1>
+                        {% else %}
+                        <h1>Create New Artwork</h1>
+                        {% endif %}
+                        <div class="col-12 mt-3">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <!-- Title -->
+                                    <div class="form-floating mb-4">
+                                        {% render_field form.title|attr:'required' class="form-control" %}
+                                        <label for="id_title" class="form-label">Title: </label>
+                                        {% for error in field.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    <!-- Art Medium -->
+                                    <div class="form-floating mb-4">
+                                        {% render_field form.art_medium|attr:'required' class="form-control" %}
+                                        <label for="id_art_medium" class="form-label">Art Medium: </label>
+                                        {% for error in field.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
 
-                    {% for field in form %}
-                    <div class="mb-3">
-                        <label for="formInput#text" class="form-label">{{field.label}}</label>
-                        <p>{{field}}</p>
+                                    <!-- Town -->
+                                    <div class="form-floating mb-4">
+                                        {% render_field form.town|attr:"pattern:^[A-Za-z\- ]+$"|attr:"title:Please enter valid town" class="form-control" placeholder=form.town.label %}
+                                        <label for="id_town" class="form-label">Town: *</label>
+                                        {% for error in field.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    <!-- County -->
+                                    <div class="form-floating mb-4">
+                                        {% render_field form.county class="form-control" %}
+                                        <label for="id_county" class="form-label">County: *</label>
+                                        {% for error in field.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <!-- Price -->
+                                    <div class="form-floating mb-4">
+                                        {% render_field form.price|attr:"max:1000000"|attr:"min:1"|attr:"title:Please enter amount between 1, 1000000" class="form-control" placeholder=form.price.label %}
+                                        <label for="id_price" class="form-label">Price: *</label>
+                                        {% for error in field.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Description -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group mb-4">
+                                    <label for="id_description" class="form-label">Description:</label>
+                                    {% render_field form.description|attr:"maxlength:2500" class="form-control" placeholder='Max 2500 characters' %}
+                                    {% for error in field.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group mb-4">
+                                    <label for="id_tags" class="form-label">Tags:</label>
+                                    {% render_field form.tags class="form-control" %}
+                                    {% for error in field.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Images -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h3>Images:</h3>
+                                <div class="form-group mb-4">
+                                    <label for="id_featured_image" class="form-label">Featured Image:</label>
+                                    {% render_field form.featured_image class="form-control" %}
+                                    {% for error in field.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="id_listing_image1" class="form-label ">Additional Images:</label>
+                                    {% render_field form.listing_image1 class="form-control" %}
+                                    {% for error in field.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="id_listing_image2" class="form-label sr-only">Additional
+                                        Images:</label>
+                                    {% render_field form.listing_image2 class="form-control" %}
+                                    {% for error in field.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <label for="id_listing_image3" class="form-label sr-only">Additional
+                                        Images:</label>
+                                    {% render_field form.listing_image3 class="form-control" %}
+                                    {% for error in field.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    {% endfor %}
-
-                    <button type="submit" class="btn btn-primary my-3 px-3">Submit</button>
+                    <button type="submit" class="btn btn-secondary btn-lg">Submit</button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
 {% endblock %}

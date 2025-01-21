@@ -26,19 +26,19 @@ h6 {
   font-style: normal;
 }
 
+.form-container {
+  background-color: #fff;
+  border-radius: 5px;
+  border: 1px solid #4f7077;
+  box-shadow: 12px 12px 2px 1px #7fb1bc;
+}
+
 /* Navbar */
 .navbar,
 .navbar-brand .nav-link {
   font-weight: 600;
   background-color: #4f7077 !important;
   color: #fff !important;
-}
-
-.logRegister-container {
-  background-color: #fff;
-  border-radius: 5px;
-  border: 1px solid #4f7077;
-  box-shadow: 12px 12px 2px 1px #7fb1bc;
 }
 
 .login-container a {
@@ -196,7 +196,7 @@ span > small {
   border: 2px solid #e5e7eb;
 }
 
-input.input[type="checkbox"] {
+input[type="checkbox"] {
   cursor: pointer;
   display: flex;
 }
