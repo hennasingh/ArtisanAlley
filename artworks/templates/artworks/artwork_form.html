@@ -10,10 +10,10 @@
                 <form class="form" method="POST" enctype="multipart/form-data" id="artwork-form">
                     {% csrf_token %}
                     <div class="row justify-content-center">
-                        {% if page == 'edit' %}
-                        <h1>Edit Artwork</h1>
+                        {% if page == 'update-artwork' %}
+                        <h1>Update Artwork</h1>
                         {% else %}
-                        <h1>Create New Artwork</h1>
+                        <h1>Artwork Details</h1>
                         {% endif %}
                         <div class="col-12 mt-3">
                             <div class="row">

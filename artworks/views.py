@@ -36,7 +36,7 @@ def createArtwork(request):
 @login_required(login_url="login")
 def updateArtwork(request, pk):
     profile = request.user.profile
-    artwork = profile.artwork_set.get(id=pk)
+    artwork = profile.artworks_set.get(id=pk)
     form = ArtworkForm(instance=artwork)
 
     if request.method == 'POST':
@@ -52,7 +52,7 @@ def updateArtwork(request, pk):
 @login_required(login_url="login")
 def deleteArtwork(request, pk):
     profile = request.user.profile
-    artwork = profile.artwork_set.get(id=pk)
+    artwork = profile.artworks_set.get(id=pk)
     if request.method == 'POST':
         artwork.delete()
         return redirect('artworks')
