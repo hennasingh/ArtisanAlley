@@ -25,7 +25,7 @@ def createArtwork(request):
         form = ArtworkForm(request.POST, request.FILES)
         if form.is_valid():
             artwork = form.save(commit=False)
-            artwork.owner = profile
+            artwork.profile_owner = profile
             artwork.save()
             return redirect('artworks')
 
