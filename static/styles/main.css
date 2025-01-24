@@ -114,6 +114,7 @@ span > small {
   font-weight: 700;
   color: #553f34;
 }
+
 /* Artist Card Styles */
 .artist-card img {
   object-fit: cover;
@@ -206,6 +207,60 @@ span > small {
 
 .form-group input[type="checkbox"] {
   margin-right: 10px;
+}
+
+/* Inbox */
+.inbox {
+  height: 90vh;
+}
+
+.messages {
+  list-style: none;
+  padding: 0.5rem 3rem;
+  border: 2px solid #7fb1bc;
+  border-radius: 0.7rem;
+}
+
+.message {
+  padding: 1.5rem 0;
+}
+
+.message-unread a span {
+  font-weight: 700;
+  color: #553f34;
+}
+
+.message > a span {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.message:not(:last-child) {
+  border-bottom: 2px solid #7fb1bc;
+}
+
+.message > a {
+  display: flex;
+  gap: 1rem;
+}
+
+.message-author,
+.message-date {
+  flex-basis: 25%;
+}
+
+.message-subject {
+  flex-basis: 50%;
+}
+
+.message-date {
+  text-align: right;
+}
+
+.message-box {
+  width: 70%;
+  margin: 2rem auto;
+  border: 1px solid #4f7077;
 }
 
 /* Footer */

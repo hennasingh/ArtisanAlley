@@ -13,4 +13,5 @@ urlpatterns = [
     path('edit-account/', views.editAccount, name="edit-account"),
 
     path('inbox/', views.inbox, name="inbox"),
+    path('message/<str:pk>/', views.viewMessage, name="message"),
 ]

@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Message
 from .forms import CustomUserCreationForm, ProfileForm
 from .utils import paginateProfiles
 from django.db.models import Q
@@ -107,3 +107,26 @@ def editAccount(request):
 
     context = {'form': form}
     return render(request, 'artists/profile_form.html', context)
+
+
+@login_required(login_url='login')
+def inbox(request):
+    profile = request.user.profile
+    messageRequests = profile.receiver_messages.all()
+    unreadCount = messageRequests.filter(is_read=False).count()
+
+    context = {'messageRequests': messageRequests, 'unreadCount': unreadCount}
+    return render(request, 'artists/inbox.html', context)
+
+
+@login_required(login_url='login')
+def viewMessage(request, pk):
+    profile = request.user.profile
+    message = profile.receiver_messages.get(id=pk)
+
+    if message.is_read == False:
+        message.is_read = True
+        message.save()
+
+    context={'message': message}
+    return render(request, 'artists/message.html', context)

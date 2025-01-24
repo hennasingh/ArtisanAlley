@@ -1,0 +1,30 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<section>
+    <div class="container py-5 inbox">
+        <div class="inbox-header d-flex justify-content-between align-items-center mb-4">
+            <h3>New Messages(<span>{{ unreadCount }}</span>)</h3>
+        </div>
+
+        <!-- Message List -->
+        <ul class="messages">
+            {% for message in messageRequests %}
+            {% if message.is_read == False %}
+            <li class="message message-unread">
+                {% else %}
+            <li class="message">
+                {% endif %}
+                <a href="{% url 'message' message.id %}" class="text-decoration-none">
+                    <span class="message-author">{{message.name}}</span>
+                    <span class="message-subject">{{message.subject}}</span>
+                    <span class="message-date">{{message.created}}</span>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</section>
+{% endblock %}
