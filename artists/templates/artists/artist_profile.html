@@ -1,0 +1,57 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="container py-5">
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <img src="{{profile.profile_image.url}}" class="img-fluid rounded"
+                    alt="Artist {{ profile.name }}Profile Picture">
+            </div>
+            <div class="col-md-8">
+                <h1>{{ profile.name }}</h1>
+                <p class="text-muted">Location: {{ profile.location }}</p>
+                <p>{{profile.short_intro}}</p>
+                <p>{{profile.bio}}</p>
+                <p><strong>Email: </strong>{{ profile.email }}</p>
+                <h4>
+                    {% if profile.social_facebook %}
+                    <a href="{{profile.social_facebook}}" class="mx-1" target="_blank"><i
+                            class="fab fa-facebook"></i></a>
+                    {% endif %}
+
+                    {% if profile.social_website %}
+                    <a href="{{profile.social_website}}" class="mx-1" target="_blank"><i class="fas fa-globe"></i></a>
+                    {% endif %}
+
+                    {% if profile.social_instagram %}
+                    <a href="{{profile.social_instagram}}" class="mx-1" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    {% endif %}
+
+                </h4>
+                <button class="btn btn-secondary mt-4">Contact Artist</button>
+            </div>
+        </div>
+
+        <!-- Artworks Section -->
+        <h2>Artworks</h2>
+        <div class="row g-4">
+            {% for artwork in profile.artworks_set.all %}
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <a href="{% url 'artwork' artwork.id %}">
+                        <img src="{{ artwork.featured_image.url }}" class="artwork-thumbnail" alt="artwork thumbnail">
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ artwork.title }}</h5>
+                        <p class="card-text">{{ artwork.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

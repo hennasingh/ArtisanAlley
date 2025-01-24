@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
-    'artworks',
+    'artworks.apps.ArtworksConfig',
     'artists.apps.ArtistsConfig',
     'widget_tweaks',
 ]

@@ -72,7 +72,7 @@ def profiles(request):
 def artistProfile(request, pk):
     profile = Profile.objects.get(id=pk)
     context = {'profile':profile}
-    return render(request, 'artists/artist-profile.html', context)
+    return render(request, 'artists/artist_profile.html', context)
 
 
 @login_required(login_url='login')
