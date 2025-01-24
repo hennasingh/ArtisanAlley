@@ -24,5 +24,6 @@
             {% endfor %}
         </div>
     </div>
+    {% include 'pagination.html' with queryset=profiles custom_range=custom_range %}
 </section>
 {% endblock %}

@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from .models import Profile
 from .forms import CustomUserCreationForm, ProfileForm
+from .utils import paginateProfiles
 from django.db.models import Q
 
 # Create your views here.
@@ -71,7 +72,10 @@ def profiles(request):
         search_query = request.GET.get('search_query')
 
     profiles = Profile.objects.filter( Q (name__icontains=search_query) | Q(location__icontains=search_query))
-    context = {'profiles': profiles, 'search_query': search_query}
+
+    custom_range, profiles = paginateProfiles(request, profiles, 3)
+
+    context = {'profiles': profiles, 'search_query': search_query, 'custom_range':custom_range}
     return render(request, 'artists/profiles.html', context)
 
 

@@ -1,0 +1,29 @@
+{% if queryset.has_other_pages %}
+<!-- Pagination -->
+<div class="row">
+    <div class="col-md-12">
+        <ul class="pagination justify-content-center btn-group">
+
+            {% if queryset.has_previous %}
+            <li class="px-1"><a href="?page={{ queryset.previous_page_number }}"
+                    class="text-decoration-none btn ">&#10094;</a></li>
+            {% endif %}
+            {% for page in custom_range %}
+
+            {% if page == queryset.number %}
+            <li class="px-1"><a href="?page={{page}}" class="btn btn-secondary text-decoration-none">{{ page }}</a>
+            </li>
+            {% else %}
+            <li class="px-1"><a href="?page={{page}}"
+                    class="btn btn-outline-secondary text-decoration-none">{{ page }}</a></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if queryset.has_next %}
+            <li class="px-1"><a href="?page={{ queryset.next_page_number }}"
+                    class="text-decoration-none btn ">&#10095;</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% endif %}
