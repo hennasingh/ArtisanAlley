@@ -5,43 +5,24 @@
 <!-- Profile Header -->
 {% include 'partials/profiles-header.html' %}
 
-<!-- Search Result: Artists -->
-<section class="artists">
-    <div class="container-fluid">
-        <div class="row justify-content-center mt-5">
+<section>
+    <!-- Artist Cards -->
+    <div class="container py-5 my-5">
+        <div class="row g-4 mt-3 text-center">
+            <h5>Discover the incredible talents behind the art.</h5>
             {% for profile in profiles %}
-            <!-- Profile Card-->
-            <div class="col-10 col-md-6 col-xl-3">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0 justify-content-around">
-                        <div class="col-md-4">
-                            <img src="{{profile.profile_image.url}}" class="img-fluid rounded-start" alt="...">
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card-body">
-                                <h5 class="card-title">{{profile.name}}</h5>
-                                <p class="card-text">{{profile.short_intro|slice:"60"}}</p>
-                            </div>
-                        </div>
+            <div class="col-md-4">
+                <a href="{% url 'artist-profile' profile.id %}" class="text-decoration-none text-dark">
+                    <div class="artist-card p-3 border rounded shadow-sm">
+                        <img src="{{ profile.profile_image.url }}" alt="Artist {{ profile.name }}">
+                        <h5>{{ profile.name }}</h5>
+                        <p class="text-muted">{{ profile.short_intro }}</p>
+                        <p class="text-muted"><small>{{ profile.location }}</small></p>
                     </div>
-                    <div class="row">
-                        <div class="col">
-                            <p class="card-text p-2 m-2">
-                                {{profile.bio|slice:"152"}}
-                            </p>
-                        </div>
-                    </div>
-                    <div class="row align-self-center">
-                        <div class="col">
-                            <a href="{% url 'artist-profile' profile.id %}"><button type="button"
-                                    class="btn btn-success mb-4 btn-viewProfile">View Profile</button></a>
-                        </div>
-                    </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>
     </div>
-
 </section>
-{% endblock content %}
+{% endblock %}

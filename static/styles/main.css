@@ -94,9 +94,7 @@ span > small {
 }
 
 .profile-header {
-  height: 40vh;
-  display: flex;
-  align-items: center;
+  height: 45vh;
   background-color: #7fb1bc;
 }
 
@@ -116,21 +114,27 @@ span > small {
   font-weight: 700;
   color: #553f34;
 }
-
-.profile-section__search > .form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+/* Artist Card Styles */
+.artist-card img {
+  object-fit: cover;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
 }
 
-.profile-section__search > .form input.input--text {
-  width: 50rem;
+.artist-card {
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.btn-viewProfile {
-  background-color: #553f34;
-  color: white;
+.artist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Artist Profile Page*/
