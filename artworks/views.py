@@ -4,13 +4,17 @@ from .models import Artworks
 from django.contrib import messages
 from .forms import ArtworkForm
 from cloudinary.forms import cl_init_js_callbacks  
+from .utils import paginateArtworks
 
 # Create your views here.
 
 def artworks(request):
     # this is how we pass messages/variables to html page
     artworks = Artworks.objects.all()
-    context = {'artworks': artworks}
+
+    custom_range, artworks = paginateArtworks(request, artworks, 6)
+
+    context = {'artworks': artworks, 'custom_range':custom_range}
     return render(request, 'artworks/artworks.html', context)
 
 def artwork(request, pk):
