@@ -64,7 +64,9 @@
                     {% endfor %}
                 </div>
                 <p>Description: {{ artwork.description }}</p>
-                <a href=""><button class="btn btn-primary mt-3">Contact Artist</button></a>
+                <a href="{% url 'artist-profile' artwork.profile_owner.id %}"><button
+                        class="btn btn-primary mt-3">Contact
+                        Artist</button></a>
             </div>
         </div>
     </div>

@@ -17,9 +17,11 @@ def artworks(request):
     context = {'artworks': artworks, 'custom_range':custom_range}
     return render(request, 'artworks/artworks.html', context)
 
+
 def artwork(request, pk):
     artworkObj = Artworks.objects.get(id=pk)
     return render(request, 'artworks/single-artwork.html', {'artwork': artworkObj})
+
 
 @login_required(login_url="login")
 def createArtwork(request):
