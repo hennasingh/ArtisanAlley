@@ -83,6 +83,8 @@ Color scheme suggestions were taken from Coolers on uploading an image from Free
 
 ### Database Schema
 
+This was the original schema that I had planned, but a lot changed as I understand more about Django, implemented new features and discarded others.
+
 ![entity relationship diagram](./assets/readme-images/erdSQL.png)
 
 #### Models
@@ -106,6 +108,59 @@ This model stores favorites for each profile. It is connected via Foreign Key pr
 5. Tag Model
 
 This model stores tags an artist can add to its artwork.
+
+## Agile Methodology
+
+### Overview
+
+This was my first full-stack application and there was a huge learning curve on both technology and process. I attempted following Agile principles to plan features of my site. I add initial user-stories and acceptance criteria to outline the requirements of the project but a lot changed as I progressed working on it.
+
+### EPICS (Milestones)
+
+I grouped user-stories in milestones but I struggled to vision all stories and milestones when I began the project. Some I created as I kept working on it and made edits as required.
+
+![Milestones](milestones.png)
+
+### MoSCoW prioritization
+
+I came to know about this strategy while looking at Github profiles and I wanted to try using it for my project so I could effectively prioritize features and requirements of the project based on importance. I wont say I succeeded with the approach but it was a good learning experience.
+
+![Issues list](./assets/readme-images/moscow.png)
+
+### Github Projects
+
+The Kanban Board was created to keep track of different user stories and their progress. Columns such as Todo, In Progress, Done, were added to visualize the workflow.
+
+![Github Projects ](./assets/readme-images/githubProjects.png)
+
+### User Story Issues
+
+The structure of the user story issue consists of the user-story, acceptance criteria, and tasks required to complete the issue. Wherever possible, the commit messages were connected to the corresponding issues that does let to larger commits.
+
+![User Story Issues](./assets/readme-images/userStoryIssues.png)
+
+## Site Features
+
+## Future Implementations
+
+## Technologies and Languages
+
+### Languages Used
+
+- HTML
+- CSS
+- JavaScript
+- Bootstrap
+- Python
+- Django
+
+### Technologies and Programs
+
+- [Favicon Generator](https://favicon.io/favicon-converter/) for generating Favicon
+- [Github](https://github.com/) for site hosting
+- [Git](https://git-scm.com/) for version control
+- [Coolors.co](https://coolors.co/) for color scheme
+- [Google Fonts](https://fonts.google.com/) for headings and body font
 
 #### Resources
 
