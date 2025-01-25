@@ -41,12 +41,18 @@
         <!-- Artworks Section -->
         <h2>Artworks</h2>
         <div class="row g-4">
-            {% if artwork in profile.artworks_set.all %}
+            {% if profile.artworks_set.all %}
             {% for artwork in profile.artworks_set.all %}
             <div class="col-md-4">
                 <div class="card h-100">
                     <a href="{% url 'artwork' artwork.id %}">
-                        <img src="{{ artwork.featured_image.url }}" class="artwork-thumbnail" alt="artwork thumbnail">
+                        {% if "placeholder" in artwork.featured_image.url  %}
+                        <img src="{% static 'images/default-artwork.webp' %}" class="artwork-thumbnail"
+                            alt="placeholder photo">
+                        {% else %}
+                        <img src="{{ artwork.featured_image.url }}" class="artwork-thumbnail"
+                            alt="{{artwork.title}} Image">
+                        {% endif %}
                     </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ artwork.title }}</h5>

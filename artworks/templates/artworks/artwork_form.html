@@ -80,7 +80,7 @@
                                 <div class="form-group mb-4 py-3">
                                     <label for="id_tags" class="form-label">Tags:</label>
                                     {{ form.tags }}
-                                    {% for error in field.errors %}
+                                    {% for error in form.tags.errors %}
                                     <span class="text-danger">{{ error }}</span>
                                     {% endfor %}
                                 </div>
