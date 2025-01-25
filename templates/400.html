@@ -1,0 +1,15 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <div class="row my-4 align-items-center">
+            <div class="col-sm-10 col-lg-8  mx-auto text-center my-5 p-4">
+                <h2>Error: 400 Bad Request</h2>
+                <p>The page you are looking for could not be found!</p>
+                <a href="{% url 'artworks' %}" class="btn btn-secondary">Go Back Home</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
