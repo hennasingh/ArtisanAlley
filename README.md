@@ -119,7 +119,7 @@ This was my first full-stack application and there was a huge learning curve on 
 
 I grouped user-stories in milestones but I struggled to vision all stories and milestones when I began the project. Some I created as I kept working on it and made edits as required.
 
-![Milestones](milestones.png)
+![Milestones](./assets/readme-images/milestones.png)
 
 ### MoSCoW prioritization
 
@@ -143,6 +143,18 @@ The structure of the user story issue consists of the user-story, acceptance cri
 
 ## Future Implementations
 
+1. I would like to improve UI/UX of the website and make it more user friendly and visually appealing. The current objective was to focus on Django functionality and processes.
+2. I would like to improve image display and restrict image size upload.
+3. I would like to add Email functionality. There should be welcome email when you join the platform and option to email artists. Starting 2025 Google deprecated less secure apps functionality that allowed third party service integration and now only supports integration through OAuth.
+4. I would like to add favorite functionality. Originally it was part of the plan, but due to less time, I added message functionality instead.
+5. An option to follow and artist, will also be added.
+6. An option to reset passwords will be added.
+7. An option to delete and account will be added.
+
+## Testing
+
+Testing documentation can be found [here](./Testing.md)
+
 ## Technologies and Languages
 
 ### Languages Used
@@ -161,7 +173,53 @@ The structure of the user story issue consists of the user-story, acceptance cri
 - [Git](https://git-scm.com/) for version control
 - [Coolors.co](https://coolors.co/) for color scheme
 - [Google Fonts](https://fonts.google.com/) for headings and body font
+- [Balsamiq](https://balsamiq.com/) for designing wireframes for desktop and mobile
+- [Font Awesome](https://fontawesome.com/icons) - For icons in header, and social icons in footer and artist profile
+- [ChatGPT](https://chat.openai.com/) - for text on Artisan Alley, and debugging CSS and HTML code
+- [Cloudinary](https://cloudinary.com/) For Image Storage
 
-#### Resources
+## Deployment
 
-https://www.youtube.com/watch?v=ynToND_xOAM - Django Widget Tweaks
+### Deployment on Heroku
+
+- To deploy on Heroku, create an account
+- Create a new app, specify name, and region.
+- On the next page, click on settings tab, and scroll down to Config Vars. Any API /secret keys are added here. The project requires credentials for:
+  1. Postgres Database URL
+  2. Cloudinary API URL
+- Then come to Deploy App, connect the app from Github, search Repository and connect Heroku to Github Code
+- Click on Deploy and wait for app to be built.Once this is done, a message that the app was successfully deployed with a view button to see the app wil be displayed.
+
+### Local Clones or Fork
+
+- Navigate to the project repository.
+- Click on the green "Code" button and local tab as shown below:
+
+![local clone](./assets/readme-images/localClone.png)
+
+- There are 3 methods provided to clone 'HTTPS', 'SSH',or 'Github Cli' that requires you to copy the repository link and type `git clone`in your terminal (mac) or command prompt (windows) in the chosen directory.
+- The 4th option requires you to install Github Desktop and you can open the repository in your chosen local directory.
+- The other option is to Fork the repository as shown in top right of the snapshot above. This will create a copy of repo in your own Github and you can make changes making this repo as a starting template.
+
+## Credits
+
+### Code Used
+
+- [Dennis Ivy](https://github.com/divanov11/Django-Course/tree/master) for Django course and project code. Part of UIs were inspired by his project code
+- [Daayana' Code](https://github.com/Dayana-N/AutoMarket-PP4/blob/main/listings/templates/listings/listing_form.html) for introduction to Django widget tweaks and creating forms
+- [Daayana's Code](https://github.com/Dayana-N/AutoMarket-PP4/milestones) for introduction to Epics and Milestones
+
+### Content
+
+- [chatGPT](https://chat.openai.com/) for text on Artisan Alley, Image Carousel Code -[Django Widget Tweaks](https://www.youtube.com/watch?v=ynToND_xOAM) for learning how to use
+
+### Media
+
+- [Freepick](https://www.freepik.com/) for hero and artwork (quilling, jewellery) images
+- [Font Awesome](https://fontawesome.com/search?ic=free) for social media icons
+
+## Acknowledgements
+
+- I would like to thank [Code Institute](https://codeinstitute.net/) Tutor team for their assistance with troubleshooting and debugging some project issues
+- I would like to thank Claudia, a peer in the Code Institute course for pushing me during periods of self-doubt.
+- A friend Stennie, for believing me to finish this project :P when I had given up.
