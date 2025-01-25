@@ -15,7 +15,7 @@
                 <p>{{profile.short_intro}}</p>
                 <p>{{profile.bio}}</p>
                 <p><strong>Email: </strong>{{ profile.email }}</p>
-                <h4>
+                <div class="artist-social">
                     {% if profile.social_facebook %}
                     <a href="{{profile.social_facebook}}" class="mx-1" target="_blank"><i
                             class="fab fa-facebook"></i></a>
@@ -30,7 +30,7 @@
                             class="fab fa-instagram"></i></a>
                     {% endif %}
 
-                </h4>
+                </div>
                 {% if request.user.profile.id != profile.id %}
                 <a href="{% url 'create-message' profile.id %}" class="btn btn-secondary mt-4 text-decoration-none">Send
                     Message</a>
@@ -41,6 +41,7 @@
         <!-- Artworks Section -->
         <h2>Artworks</h2>
         <div class="row g-4">
+            {% if artwork in profile.artworks_set.all %}
             {% for artwork in profile.artworks_set.all %}
             <div class="col-md-4">
                 <div class="card h-100">
@@ -54,6 +55,11 @@
                 </div>
             </div>
             {% endfor %}
+            {% else %}
+            <div class="col-md-6">
+                <p>You have not added any artworks.</p>
+            </div>
+            {% endif %}
         </div>
     </div>
 </section>
