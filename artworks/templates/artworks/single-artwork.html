@@ -11,25 +11,25 @@
                 <div id="artworkCarousel" class="carousel slide" data-bs-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
-                            {% if "placeholder" in artwork.featured_image.url %}
-                            <img src="{% static 'images/default-artwork-img.jpg' %}" class="card-img-top"
+                            {% if "placeholder" in artwork.featured_image.url  %}
+                            <img src="{% static 'images/default-artwork.webp' %}" class="card-img-top"
                                 alt="placeholder photo">
                             {% else %}
                             <img src="{{ artwork.featured_image.url }}" class="card-img-top" alt="{{artwork.title}}">
                             {% endif %}
                         </div>
                         <div class="carousel-item">
-                            {% if artwork.listing_image1 %}
+                            {% if artwork.listing_image1.url %}
                             <img src="{{ artwork.listing_image1.url }}" alt="{{artwork.title}}">
                             {% endif %}
                         </div>
                         <div class="carousel-item">
-                            {% if artwork.listing_image2 %}
+                            {% if artwork.listing_image2.url %}
                             <img src="{{ artwork.listing_image2.url }}" alt="{{artwork.title}}">
                             {% endif %}
                         </div>
                         <div class="carousel-item">
-                            {% if artwork.listing_image3 %}
+                            {% if artwork.listing_image3.url %}
                             <img src="{{ artwork.listing_image3.url }}" alt="{{artwork.title}}">
                             {% endif %}
                         </div>
@@ -64,9 +64,10 @@
                     {% endfor %}
                 </div>
                 <p>Description: {{ artwork.description }}</p>
-                <a href="{% url 'artist-profile' artwork.profile_owner.id %}"><button
-                        class="btn btn-primary mt-3">Contact
-                        Artist</button></a>
+                {% if request.user.profile.id != artwork.profile_owner.id %}
+                <a href="{% url 'artist-profile' artwork.profile_owner.id %}" class="btn btn-secondary mt-3">Contact
+                    Artist</a>
+                {% endif %}
             </div>
         </div>
     </div>
