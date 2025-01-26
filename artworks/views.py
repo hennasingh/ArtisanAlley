@@ -1,17 +1,17 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from cloudinary.forms import cl_init_js_callbacks  
+from cloudinary.forms import cl_init_js_callbacks
 from .models import Artworks
 from .forms import ArtworkForm
 from .utils import paginateArtworks
 
 # Create your views here.
 
+
 def artworks(request):
     """
-    Renders the most recent artworks on the website and allows viewing 
-    artists profile.
+    Renders the most recent artworks on the website and allows viewing
     Displays an individual instance of :model:`artworks.Artworks`
     and handles pagination
     """
@@ -19,7 +19,7 @@ def artworks(request):
 
     custom_range, artworks = paginateArtworks(request, artworks, 6)
 
-    context = {'artworks': artworks, 'custom_range':custom_range}
+    context = {'artworks': artworks, 'custom_range': custom_range}
     return render(request, 'artworks/artworks.html', context)
 
 
@@ -28,7 +28,9 @@ def artwork(request, pk):
     The view handles display of details in a single artwork piece
     """
     artworkObj = Artworks.objects.get(id=pk)
-    return render(request, 'artworks/single-artwork.html', {'artwork': artworkObj})
+    return render(
+        request, 'artworks/single-artwork.html',
+        {'artwork': artworkObj})
 
 
 @login_required(login_url="login")
@@ -75,7 +77,7 @@ def updateArtwork(request, pk):
 @login_required(login_url="login")
 def deleteArtwork(request, pk):
     """
-    The view handles delete request of any artwork and confirm 
+    The view handles delete request of any artwork and confirm
     deletion using delete-artwork template
     """
     profile = request.user.profile

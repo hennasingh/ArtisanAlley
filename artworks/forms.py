@@ -3,11 +3,11 @@ from django import forms
 from cloudinary.forms import CloudinaryFileField
 from .models import Artworks
 
+
 class ArtworkForm(ModelForm):
     """
     The class defines Artwork form for create and edit
     artworks
-    
     """
     featured_image = CloudinaryFileField()
     listing_image1 = CloudinaryFileField()
@@ -16,9 +16,11 @@ class ArtworkForm(ModelForm):
 
     class Meta:
         model = Artworks
-        fields = ['title', 'description', 'featured_image', 'listing_image1', 'listing_image2', 'listing_image3', 
-        'price', 'town', 'county', 'art_medium', 'tags']
+        fields = [
+            'title', 'description', 'featured_image',
+            'listing_image1', 'listing_image2', 'listing_image3',
+            'price', 'town', 'county', 'art_medium', 'tags'
+        ]
         widgets = {
-            'tags':forms.CheckboxSelectMultiple(),
+            'tags': forms.CheckboxSelectMultiple(),
         }
-
