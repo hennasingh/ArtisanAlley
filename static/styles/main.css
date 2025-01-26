@@ -56,7 +56,7 @@ h6 {
 
 /* Hero section - Artworks Page */
 #hero-image {
-  background-image: url(/static/images/hero-image.webp);
+  background-image: url(/static/images/hero_imageResized.webp);
   background-repeat: no-repeat;
   background-position: left;
   background-size: cover;
