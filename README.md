@@ -70,6 +70,9 @@ The wireframes for mobile and desktop were created using Balsamiq. These were th
 
 ### Typography
 
+ChatGPT suggestion was taken into account on choosing the font for the website.
+Abril Fatface (headers) + Lora (body) Google fonts are used.
+
 ### Colors
 
 Color scheme suggestions were taken from Coolers on uploading an image from Freepick.
@@ -139,7 +142,65 @@ The structure of the user story issue consists of the user-story, acceptance cri
 
 ![User Story Issues](./assets/readme-images/userStoryIssues.png)
 
-## Site Features
+## Site Features And Responsiveness
+
+Main Site Features have been listed
+
+### Artworks Page - Desktop
+
+![Artworks](./assets/readme-images/artworks.png)
+
+### Artworks Page - Mobile
+
+![Artworks Hero](./assets/readme-images/artworksHero.png)
+
+### Artists Page - Desktop
+
+![Artists Desktop](./assets/readme-images/artistsDesktop.png)
+
+### Artists Page - Mobile
+
+![Artists Mobile](./assets/readme-images/artistsMobile.png)
+
+#### Artist Profile - Desktop
+
+![Artist Profile Desktop](./assets/readme-images/artistProDesktop.png)
+
+#### Artist Profile - Mobile
+
+![Artist Profile Mobile](./assets/readme-images/artistProMobile.png)
+
+#### Create/Edit Artwork - Desktop
+
+![Create Artwork Desktop](./assets/readme-images/createArtDesk.png)
+
+#### Create/Edit Artwork - Mobile
+
+![Create Artwork Mobile ](./assets/readme-images/createArtMobile.png)
+
+#### Artist Acount - Desktop
+
+![Artist Account Desktop](./assets/readme-images/artistAccountDesk.png)
+
+#### Artist Account - Mobile
+
+![Artist Account Mobile ](./assets/readme-images/artistAccountMobile.png)
+
+#### Login
+
+![Login Page](./assets/readme-images/login.png)
+
+#### Register
+
+![Register](./assets/readme-images/register.png)
+
+#### Navbar
+
+![Navbar](./assets/readme-images/navbar.png)
+
+#### Footer and Pagination
+
+![Footer ](./assets/readme-images/footer.png)
 
 ## Future Implementations
 
