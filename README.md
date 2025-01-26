@@ -2,7 +2,7 @@
 
 Artisan Alley is a directory of local arts and crafts market in Ireland. The site is built using Django, Python, and Postgres database for the portfolio project 4 of Code Institute's Full Stack Development Diploma.
 
-### Responsive Image
+![responsive site image](./assets/readme-images/responsiveSite.png)
 
 Live Link: https://artisanalley-11b7201d6523.herokuapp.com/
 
@@ -205,13 +205,14 @@ Testing documentation can be found [here](./Testing.md)
 
 ### Code Used
 
-- [Dennis Ivy](https://github.com/divanov11/Django-Course/tree/master) for Django course and project code. Part of UIs were inspired by his project code
+- [Dennis Ivy](https://github.com/divanov11/Django-Course/tree/master) for Django course and project code. Parts of UIs were inspired by his project code
 - [Daayana' Code](https://github.com/Dayana-N/AutoMarket-PP4/blob/main/listings/templates/listings/listing_form.html) for introduction to Django widget tweaks and creating forms
 - [Daayana's Code](https://github.com/Dayana-N/AutoMarket-PP4/milestones) for introduction to Epics and Milestones
 
 ### Content
 
-- [chatGPT](https://chat.openai.com/) for text on Artisan Alley, Image Carousel Code -[Django Widget Tweaks](https://www.youtube.com/watch?v=ynToND_xOAM) for learning how to use
+- [chatGPT](https://chat.openai.com/) for text on Artisan Alley, Image Carousel Code
+- [Django Widget Tweaks](https://www.youtube.com/watch?v=ynToND_xOAM) for learning how to use
 
 ### Media
 
@@ -222,4 +223,4 @@ Testing documentation can be found [here](./Testing.md)
 
 - I would like to thank [Code Institute](https://codeinstitute.net/) Tutor team for their assistance with troubleshooting and debugging some project issues
 - I would like to thank Claudia, a peer in the Code Institute course for pushing me during periods of self-doubt.
-- A friend Stennie, for believing me to finish this project :P when I had given up.
+- My friend Stennie, for believing in me and constant encouragement.
