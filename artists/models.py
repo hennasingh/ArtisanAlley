@@ -6,6 +6,10 @@ import uuid
 # Create your models here.
 
 class Profile(models.Model):
+    """
+    Stores artist profile informtion related to :model: `auth.User`
+    """
+
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200, blank=True, null=True)
     username = models.CharField(max_length=200, blank=True, null=True)
@@ -26,6 +30,9 @@ class Profile(models.Model):
 
 
 class Message(models.Model):
+    """
+    Stores messages related to :model: `artists.Profile`
+    """
     sender = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True)
     recipient = models.ForeignKey(Profile, on_delete=models.SET_NULL, null=True, blank=True, related_name="receiver_messages")
     name = models.CharField(max_length=200, null=True, blank=True)

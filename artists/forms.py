@@ -6,6 +6,9 @@ from .models import Profile, Message
 
 
 class CustomUserCreationForm(UserCreationForm):
+    """
+    The class defines custom user creation form on user registration
+    """
     class Meta:
         model = User
         fields = ['first_name', 'email', 'username', 'password1', 'password2']
@@ -15,6 +18,11 @@ class CustomUserCreationForm(UserCreationForm):
 
 
 class ProfileForm(ModelForm):
+    """
+    The class defines Profile form that reflects on artist
+    account
+
+    """
     profile_image = CloudinaryFileField()
 
     class Meta:
@@ -24,6 +32,11 @@ class ProfileForm(ModelForm):
 
 
 class MessageForm(ModelForm):
+    """
+    The class defines fields for sending a message
+    to an artist
+    
+    """
     class Meta:
         model = Message
         fields = ['name', 'email', 'subject', 'body']

@@ -12,6 +12,10 @@ from .utils import paginateProfiles
 # Create your views here.
 
 def loginUser(request):
+    """
+    The view handles login request using 
+    login template
+    """
     page ='login'
     context = {'page': page}
 
@@ -39,12 +43,21 @@ def loginUser(request):
 
 
 def logoutUser(request):
+    """
+    The view logs user out and displays
+    info message
+
+    """
     logout(request)
     messages.info(request, 'User was logged out!')
     return redirect('login')
 
 
 def registerUser(request):
+    """
+    The view handles registration request using
+    CustomUserCreation form
+    """
     page ='register'
     form = CustomUserCreationForm()
 
@@ -66,7 +79,13 @@ def registerUser(request):
     context = {'page': page, 'form':form}
     return render(request,'artists/login_register.html', context )
 
+
 def profiles(request):
+    """
+    The view displays list of all registered artists
+    on the platform and allows search via name and location
+
+    """
     search_query = ''
 
     if request.GET.get('search_query'):
@@ -82,6 +101,10 @@ def profiles(request):
 
 
 def artistProfile(request, pk):
+    """
+    The view handles individual artist profile
+
+    """
     profile = Profile.objects.get(id=pk)
     context = {'profile':profile}
     return render(request, 'artists/artist_profile.html', context)
@@ -89,6 +112,10 @@ def artistProfile(request, pk):
 
 @login_required(login_url='login')
 def userAccount(request):
+    """
+    The view displays artist profile info and display artworks 
+    created by the artists
+    """
     profile = request.user.profile
     artworks = profile.artworks_set.all()
 
@@ -98,6 +125,9 @@ def userAccount(request):
 
 @login_required(login_url='login')
 def editAccount(request):
+    """
+    The view handles editing user account
+    """
     profile = request.user.profile
     form = ProfileForm(instance=profile)
 
@@ -113,6 +143,11 @@ def editAccount(request):
 
 @login_required(login_url='login')
 def inbox(request):
+    """
+    The view displays message inbox and shows
+    messages sent by registered artists or site visitors
+
+    """
     profile = request.user.profile
     messageRequests = profile.receiver_messages.all()
     unreadCount = messageRequests.filter(is_read=False).count()
@@ -123,6 +158,11 @@ def inbox(request):
 
 @login_required(login_url='login')
 def viewMessage(request, pk):
+    """
+    The view shows message box displaying message details
+    sent by sender
+
+    """
     profile = request.user.profile
     message = profile.receiver_messages.get(id=pk)
 
@@ -135,6 +175,12 @@ def viewMessage(request, pk):
 
 
 def createMessage(request, pk):
+    """
+    The view allows creation of new message to send to an artist.
+    Based on registered or unregisted user, the form displays different fields
+    
+    """
+
     recipient = Profile.objects.get(id=pk)
     form = MessageForm()
 

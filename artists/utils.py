@@ -1,6 +1,11 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def paginateProfiles(request, profiles, results):
+    """
+    The function takes in profiles and paginate the output based
+    on result number
+    
+    """
     page = request.GET.get('page')
     paginator = Paginator(profiles, results)
 

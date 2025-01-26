@@ -8,6 +8,12 @@ from artists.models import Profile
 # Create your models here.
 
 class Artworks(models.Model):
+    """
+    Stores a single artwork entry related to :model:`artists.Profile`
+    and :model: 'artworks.Tag`.
+
+    """
+
     profile_owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
@@ -32,6 +38,9 @@ class Artworks(models.Model):
 
 
 class Tag(models.Model):
+    """
+    Stores a single tag
+    """
     name = models.CharField(max_length=200)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)

@@ -9,7 +9,12 @@ from .utils import paginateArtworks
 # Create your views here.
 
 def artworks(request):
-    # this is how we pass messages/variables to html page
+    """
+    Renders the most recent artworks on the website and allows viewing 
+    artists profile.
+    Displays an individual instance of :model:`artworks.Artworks`
+    and handles pagination
+    """
     artworks = Artworks.objects.all()
 
     custom_range, artworks = paginateArtworks(request, artworks, 6)
@@ -19,12 +24,18 @@ def artworks(request):
 
 
 def artwork(request, pk):
+    """
+    The view handles display of details in a single artwork piece
+    """
     artworkObj = Artworks.objects.get(id=pk)
     return render(request, 'artworks/single-artwork.html', {'artwork': artworkObj})
 
 
 @login_required(login_url="login")
 def createArtwork(request):
+    """
+    The view handles creation of new artwork via ArtworkForm
+    """
     profile = request.user.profile
     form = ArtworkForm()
 
@@ -43,6 +54,9 @@ def createArtwork(request):
 
 @login_required(login_url="login")
 def updateArtwork(request, pk):
+    """
+    The view handles update of any artwork piece via Artwork form
+    """
     profile = request.user.profile
     artwork = profile.artworks_set.get(id=pk)
     form = ArtworkForm(instance=artwork)
@@ -60,6 +74,10 @@ def updateArtwork(request, pk):
 
 @login_required(login_url="login")
 def deleteArtwork(request, pk):
+    """
+    The view handles delete request of any artwork and confirm 
+    deletion using delete-artwork template
+    """
     profile = request.user.profile
     artwork = profile.artworks_set.get(id=pk)
     if request.method == 'POST':

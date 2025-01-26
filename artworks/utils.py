@@ -1,6 +1,11 @@
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 def paginateArtworks(request, artworks, results):
+    """
+    The function takes in artworks and paginate the output based
+    on result number
+    
+    """
     page = request.GET.get('page')
     paginator = Paginator(artworks, results)
 

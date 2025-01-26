@@ -4,6 +4,11 @@ from cloudinary.forms import CloudinaryFileField
 from .models import Artworks
 
 class ArtworkForm(ModelForm):
+    """
+    The class defines Artwork form for create and edit
+    artworks
+    
+    """
     featured_image = CloudinaryFileField()
     listing_image1 = CloudinaryFileField()
     listing_image2 = CloudinaryFileField()
