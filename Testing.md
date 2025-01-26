@@ -21,3 +21,15 @@ This page contains all the testing details the website was run through
 | Send Message        | ![Send Message](./assets/readme-images/messageHtmlValidate.png)         | Pass      |
 | Delete Artwork      | ![Delete Artwork](./assets/readme-images/deleteHtmlValidate.png)        | Pass      |
 | Error Pages         | ![Error Pages](./assets/readme-images/errorPagesHtmlValidate.png)       | Pass      |
+
+### CSS
+
+| File     | Screenshot                                                   | Result |
+| -------- | ------------------------------------------------------------ | ------ |
+| main.css | ![Main CSS File](./assets/readme-images/mainCSSValidate.png) | Pass   |
+
+### JavaScript
+
+| File     | Screenshot                                                    | Result |
+| -------- | ------------------------------------------------------------- | ------ |
+| main.css | ![artworks Script](./assets/readme-images/scriptValidate.png) | Pass   |
