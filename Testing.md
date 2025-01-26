@@ -33,3 +33,12 @@ This page contains all the testing details the website was run through
 | File     | Screenshot                                                    | Result |
 | -------- | ------------------------------------------------------------- | ------ |
 | main.css | ![artworks Script](./assets/readme-images/scriptValidate.png) | Pass   |
+
+### Python
+
+Validation for Artisan Alley App. Auto-generated files (wsgi,agi, etc) are not added.
+
+| File        | Screenshot                                               | Result              |
+| ----------- | -------------------------------------------------------- | ------------------- |
+| settings.py | ![settings file](./assets/readme-images/settingsPiP.png) | Auto generated code |
+| urls.py     | ![Urls.py](./assets/readme-images/urlsPiP.png)           | Pass                |
