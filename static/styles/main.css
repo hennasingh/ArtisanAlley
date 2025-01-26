@@ -5,7 +5,6 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Lora", serif;
-  font-optical-sizing: auto;
   font-style: normal;
 }
 
@@ -18,7 +17,6 @@ h4,
 h5,
 h6 {
   font-family: "Abril Fatface", serif;
-  font-weight: 400;
   font-style: normal;
 }
 
@@ -29,18 +27,31 @@ h6 {
   box-shadow: 12px 12px 2px 1px #7fb1bc;
 }
 
+.container {
+  width: 90%;
+}
+
 /* Navbar */
 .navbar,
 .navbar-brand .nav-link {
-  font-weight: 600;
   background-color: #4f7077 !important;
-  color: #fff !important;
 }
+
 .brand-title {
   display: inline;
 }
+
 .login-container a {
   text-decoration: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .navbar,
+  .nav-link,
+  .navbar-brand {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
 }
 
 /* Hero section - Artworks Page */
@@ -140,6 +151,16 @@ span > small {
 
 /* Artist Profile Page*/
 
+.bg-container {
+  position: relative;
+  height: 40vh;
+}
+
+.profile-bg {
+  height: 20%;
+  width: 100%;
+}
+
 .artist-img {
   position: absolute;
   width: 200px;
@@ -148,12 +169,6 @@ span > small {
   left: 50%;
   right: 50%;
   transform: translateX(-50%);
-}
-
-.btn-edit {
-  position: absolute;
-  top: 30%;
-  left: 60%;
 }
 
 .artist-social i {
