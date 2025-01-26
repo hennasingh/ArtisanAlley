@@ -27,15 +27,18 @@ class ProfileForm(ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['name', 'email', 'username', 'location', 'bio', 
-        'short_intro', 'profile_image', 'social_instagram', 'social_website', 'social_facebook' ]
+        fields = [
+            'name', 'email', 'username', 'location', 'bio',
+            'short_intro', 'profile_image', 'social_instagram',
+            'social_website', 'social_facebook'
+        ]
 
 
 class MessageForm(ModelForm):
     """
     The class defines fields for sending a message
     to an artist
-    
+
     """
     class Meta:
         model = Message

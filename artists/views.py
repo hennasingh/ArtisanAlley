@@ -13,10 +13,10 @@ from .utils import paginateProfiles
 
 def loginUser(request):
     """
-    The view handles login request using 
+    The view handles login request using
     login template
     """
-    page ='login'
+    page = 'login'
     context = {'page': page}
 
     if request.user.is_authenticated:
@@ -28,13 +28,15 @@ def loginUser(request):
 
         try:
             user = User.objects.get(username=username)
-        except:
+        except User.DoesNotExist:
             messages.error(request, 'Username does not exist')
-
-        user = authenticate(request, username=username, password=password)
+        else:
+            user = authenticate(request, username=username, password=password)
 
         if user is not None:
             login(request, user)
+            messages.success(request, 'You are successfully logged in!')
+
             return redirect('artworks')
         else:
             messages.error(request, 'Username OR password is incorrect')
@@ -58,7 +60,7 @@ def registerUser(request):
     The view handles registration request using
     CustomUserCreation form
     """
-    page ='register'
+    page = 'register'
     form = CustomUserCreationForm()
 
     if request.method == 'POST':
@@ -74,10 +76,11 @@ def registerUser(request):
             return redirect('edit-account')
 
         else:
-            messages.error(request, 'An error has occurred during registration')
+            messages.error(
+                request, 'An error has occurred during registration')
 
-    context = {'page': page, 'form':form}
-    return render(request,'artists/login_register.html', context )
+    context = {'page': page, 'form': form}
+    return render(request, 'artists/login_register.html', context)
 
 
 def profiles(request):
@@ -91,12 +94,14 @@ def profiles(request):
     if request.GET.get('search_query'):
         search_query = request.GET.get('search_query')
 
-    profiles = Profile.objects.filter( Q (name__icontains=search_query) 
-    | Q(location__icontains=search_query))
+    profiles = Profile.objects.filter(
+        Q(name__icontains=search_query) | Q(location__icontains=search_query))
 
     custom_range, profiles = paginateProfiles(request, profiles, 3)
 
-    context = {'profiles': profiles, 'search_query': search_query, 'custom_range':custom_range}
+    context = {
+        'profiles': profiles, 'search_query': search_query,
+        'custom_range': custom_range}
     return render(request, 'artists/profiles.html', context)
 
 
@@ -106,20 +111,20 @@ def artistProfile(request, pk):
 
     """
     profile = Profile.objects.get(id=pk)
-    context = {'profile':profile}
+    context = {'profile': profile}
     return render(request, 'artists/artist_profile.html', context)
 
 
 @login_required(login_url='login')
 def userAccount(request):
     """
-    The view displays artist profile info and display artworks 
+    The view displays artist profile info and display artworks
     created by the artists
     """
     profile = request.user.profile
     artworks = profile.artworks_set.all()
 
-    context = {'profile':profile, 'artworks': artworks}
+    context = {'profile': profile, 'artworks': artworks}
     return render(request, 'artists/account.html', context)
 
 
@@ -135,6 +140,9 @@ def editAccount(request):
         form = ProfileForm(request.POST, request.FILES, instance=profile)
         if form.is_valid():
             form.save()
+            messages.success(
+                request, 'Your account details are succefssfully edited!')
+
             return redirect('account')
 
     context = {'form': form}
@@ -166,11 +174,11 @@ def viewMessage(request, pk):
     profile = request.user.profile
     message = profile.receiver_messages.get(id=pk)
 
-    if message.is_read == False:
+    if message.is_read is False:
         message.is_read = True
         message.save()
 
-    context={'message': message}
+    context = {'message': message}
     return render(request, 'artists/message.html', context)
 
 
@@ -178,7 +186,7 @@ def createMessage(request, pk):
     """
     The view allows creation of new message to send to an artist.
     Based on registered or unregisted user, the form displays different fields
-    
+
     """
 
     recipient = Profile.objects.get(id=pk)
@@ -186,7 +194,7 @@ def createMessage(request, pk):
 
     try:
         sender = request.user.profile
-    except:
+    except AttributeError:
         sender = None
 
     if request.method == 'POST':
@@ -204,5 +212,5 @@ def createMessage(request, pk):
             messages.success(request, 'Your message was succefssfully sent!')
             return redirect('artist-profile', pk=recipient.id)
 
-    context ={'recipient': recipient, 'form':form}
+    context = {'recipient': recipient, 'form': form}
     return render(request, 'artists/message_form.html', context)

@@ -4,22 +4,28 @@ from django.dispatch import receiver
 from .models import Profile
 
 
-
 def createProfile(sender, instance, created, **kwargs):
+    """
+    This signal is triggered on profile creation
+    """
     if created:
         user = instance
         profile = Profile.objects.create(
-            user = user,
+            user=user,
             username=user.username,
             email=user.email,
             name=user.first_name
         )
 
+
 def updateUser(sender, instance, created, **kwargs):
+    """
+    This signal is triggered when new user registers
+    """
     profile = instance
     user = profile.user
 
-    if created == False:
+    if created is False:
         user.first_name = profile.name
         user.username = profile.username
         user.email = profile.email
@@ -27,6 +33,9 @@ def updateUser(sender, instance, created, **kwargs):
 
 
 def deleteUser(sender, instance, **kwargs):
+    """
+    This signal is triggered when user is deleted
+    """
     user = instance.user
     user.delete()
 
