@@ -58,7 +58,7 @@ Validation for Artists App. Auto-generated files are not added
 | File       | Screenshot                                               | Result |
 | ---------- | -------------------------------------------------------- | ------ |
 | forms.py   | ![forms.py](./assets/readme-images/formsArtistPeP.png)   | Pass   |
-| urls.py    | ![Urls.py](./assets/readme-images/urlsArtistPeP.png)     | Pass   |
+| urls.py    | ![Urls.py](./assets/readme-images/urlsArtistPep.png)     | Pass   |
 | models.py  | ![models.py](./assets/readme-images/modelsArtistPeP.png) | Pass   |
 | views.py   | ![views.py](./assets/readme-images/viewsArtistPeP.png)   | Pass   |
 | utils.py   | ![utils.py](./assets/readme-images/utilsArtistPeP.png)   | Pass   |
