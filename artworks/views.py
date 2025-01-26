@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Artworks
 from django.contrib import messages
-from .forms import ArtworkForm
 from cloudinary.forms import cl_init_js_callbacks  
+from .models import Artworks
+from .forms import ArtworkForm
 from .utils import paginateArtworks
 
 # Create your views here.
