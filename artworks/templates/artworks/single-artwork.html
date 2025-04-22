@@ -3,71 +3,77 @@
 
 {% block content %}
 
-<section class="single-artwork">
-    <div class="container-fluid">
-        <div class="row justify-content-center">
-            <div class="col-10 col-md-4 col-xl-3 m-4">
-                {% if "placeholder" in artwork.featured_image.url %}
-                <img src="{% static 'images/default-artwork-img.jpg' %}" class="card-img-top" alt="placeholder photo">
-                {% else %}
-                <img src="{{ artwork.featured_image.url }}" class="card-img-top" alt="{{artwork.title}}">
-                {% endif %}
+<section>
+    <div class="container py-5 single-artwork-container">
+        <div class="row">
+            <!-- Artwork Carousel -->
+            <div class="col-md-6">
+                <div id="artworkCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            {% if "placeholder" in artwork.featured_image.url  %}
+                            <img src="{% static 'images/default-artwork.webp' %}" class="card-img-top"
+                                alt="placeholder photo">
+                            {% else %}
+                            <img src="{{ artwork.featured_image.url }}" class="card-img-top" alt="{{artwork.title}}">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if artwork.listing_image1.url %}
+                            <img src="{{ artwork.listing_image1.url }}" alt="{{artwork.title}}">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if artwork.listing_image2.url %}
+                            <img src="{{ artwork.listing_image2.url }}" alt="{{artwork.title}}">
+                            {% endif %}
+                        </div>
+                        <div class="carousel-item">
+                            {% if artwork.listing_image3.url %}
+                            <img src="{{ artwork.listing_image3.url }}" alt="{{artwork.title}}">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#artworkCarousel"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#artworkCarousel"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
             </div>
-            <div class="col-10 col-md-4 col-xl-3 m-4">
-                <h1>{{artwork.title}}</h1>
-                <a href="#" class="user-profile">
-                    <h3>
-                        Artist Name <span><i class="fas fa-external-link-square-alt"></i></span>
-                    </h3>
-                </a>
+
+            <!-- Artwork Details -->
+            <div class="col-md-6">
+                <h1>{{ artwork.title }}</h1>
+                <p class="text-muted">{{ artwork.profile_owner.name }}</p>
                 <h4><i class="fas fa-euro-sign p-1"></i>{{artwork.price}}</h4>
-                <p class="mt-4 ms-1">Art Medium: {{artwork.art_medium}}</p>
-                <p><i class="fas fa-map-marker-alt px-1"></i>{{artwork.town|capfirst}}, {{artwork.county|capfirst}}</p>
-                <div class="row">
+                <p><strong>Medium: </strong>{{ artwork.art_medium }} </p>
+                <p><strong>Location: </strong> {{artwork.town|capfirst}}, {{artwork.county|capfirst}}</p>
+                <div class="row my-3">
                     {% for tag in artwork.tags.all %}
-                    <div class="col-3">
+                    <div class="col-2">
                         <span id="art-tag" class="badge text-bg-success p-2 ">
                             <small>{{tag}}</small>
                         </span>
                     </div>
                     {% endfor %}
                 </div>
-                <div class="row justify-content-start my-3">
-                    <div class="col">
-                        <h5>Description</h5>
-                        <p>{{artwork.description}}</p>
-                    </div>
-                </div>
-                <div class="row justify-content-start my-4">
-                    <div class="col-5">
-                        <button type="button" class="btn btn-primary">Contact Artist</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-10 col-md-4 col-xl-3 m-4">
-                <div class="row">
-                    <div class="col-3 col-md-1m-4">
-                        {% if artwork.listing_image1 %}
-                        <img src="{{ artwork.listing_image1.url }}" alt="{{artwork.title}}">
-                        {% endif %}
-                    </div>
-                    <div class="col-3 col-md-1m-4">
-                        {% if artwork.listing_image2 %}
-                        <img src="{{ artwork.listing_image2.url }}" alt="{{artwork.title}}">
-                        {% endif %}
-                    </div>
-                    <div class="col-3 col-md-1m-4">
-                        {% if artwork.listing_image3 %}
-                        <img src="{{ artwork.listing_image3.url }}" alt="{{artwork.title}}">
-                        {% endif %}
-                    </div>
-                </div>
+                <p>Description: {{ artwork.description }}</p>
+                {% if request.user.profile.id != artwork.profile_owner.id %}
+                <a href="{% url 'artist-profile' artwork.profile_owner.id %}" class="btn btn-secondary mt-3">Contact
+                    Artist</a>
+                {% endif %}
             </div>
         </div>
     </div>
-
 </section>
 
 {% endblock content %}
+{% block script %}
+<script src="{% static 'js/artwork.js' %}"></script>
+{% endblock script %}

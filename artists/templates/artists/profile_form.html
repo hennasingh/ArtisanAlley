@@ -1,21 +1,132 @@
 {% extends 'main.html' %}
-
+{% load widget_tweaks %}
 {% block content %}
 
 <section>
     <div class="container">
         <div class="row justify-content-center">
-            <h1 class="text-center my-4">Edit Account</h1>
-            <div class="col-10 col-md-6 col-xl-4 form-container">
+            <div class="col-10 text-center my-5 p-4 form-container">
                 <form action="{% url 'edit-account' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
+                    <div class="row justify-content-center">
+                        <h1>Update Account</h1>
+                        <div class="col-12 mt-3">
+                            <div class="row">
+                                <div class="col-12 col-md-6">
+                                    <!-- Name -->
+                                    <div class="form-floating mb-4">
+                                        {% render_field form.name|attr:'required' class="form-control" %}
+                                        <label for="id_name" class="form-label">Name: </label>
+                                        {% for error in field.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    <!-- Email -->
+                                    <div class="form-floating mb-4">
+                                        {% render_field form.email|attr:'required' class="form-control" %}
+                                        <label for="id_email" class="form-label">Email: </label>
+                                        {% for error in field.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
 
-                    {% for field in form %}
-                    <div class="mb-3">
-                        <label for="formInput#text" class="form-label">{{field.label}}</label>
-                        <p>{{field}}</p>
+                                    <!-- Location -->
+                                    <div class="form-floating mb-4">
+                                        {% render_field form.location|attr:"pattern:^[A-Za-z\- ]+$"|attr:"title:Please enter valid location" class="form-control" placeholder=form.location.label %}
+                                        <label for="id_location" class="form-label">Location: </label>
+                                        {% for error in field.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                    <!-- Username -->
+                                    <div class="form-floating mb-4">
+                                        {% render_field form.username class="form-control" %}
+                                        <label for="id_username" class="form-label">Username: </label>
+                                        {% for error in field.errors %}
+                                        <span class="text-danger">{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Short Intro -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-floating mb-4">
+                                    {% render_field form.short_intro class="form-control" %}
+                                    <label for="id_short_intro" class="form-label">Short Intro:</label>
+                                    {% for error in field.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Bio -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group mb-4">
+                                    <label for="id_bio" class="form-label">Bio:</label>
+                                    {% render_field form.bio|attr:"maxlength:2500" class="form-control" placeholder='Max 2500 characters' %}
+                                    {% for error in field.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Images -->
+                        <div class="row">
+                            <div class="col-12">
+                                <h3>Profile Image:</h3>
+                                <div class="form-group mb-4">
+                                    <label for="id_profile_image" class="form-label">Profile Image:</label>
+                                    {% render_field form.profile_image class="form-control" %}
+                                    {% for error in field.errors %}
+                                    <span class="text-danger">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Social Channels -->
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <!-- Social Facebook -->
+                                        <div class="form-floating mb-4">
+                                            {% render_field form.social_facebook class="form-control" %}
+                                            <label for="id_social_facebook" class="form-label">Facebook:
+                                            </label>
+                                            {% for error in field.errors %}
+                                            <span class="text-danger">{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <!-- Social Website -->
+                                        <div class="form-floating mb-4">
+                                            {% render_field form.social_website class="form-control" %}
+                                            <label for="id_social_website" class="form-label">Website:
+                                            </label>
+                                            {% for error in field.errors %}
+                                            <span class="text-danger">{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <!-- Social Instagram -->
+                                        <div class="form-floating mb-4">
+                                            {% render_field form.social_instagram class="form-control" %}
+                                            <label for="id_social_instagram" class="form-label">Instagram:
+                                            </label>
+                                            {% for error in field.errors %}
+                                            <span class="text-danger">{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    {% endfor %}
 
                     <button type="submit" class="btn btn-primary my-3 px-3">Submit</button>
                 </form>

@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+from django.contrib.messages import constants as messages
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -30,7 +31,10 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True if os.path.isfile('env.py') else False
 
-ALLOWED_HOSTS = ['8000-hennasingh-artisanalley-ln2sa72k1fc.ws.codeinstitute-ide.net', '.herokuapp.com']
+ALLOWED_HOSTS = [
+    '8000-hennasingh-artisanalley-ln2sa72k1fc.ws.codeinstitute-ide.net',
+    '.herokuapp.com'
+]
 
 
 # Application definition
@@ -44,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
-    'artworks',
+    'artworks.apps.ArtworksConfig',
     'artists.apps.ArtistsConfig',
     'widget_tweaks',
 ]
@@ -98,7 +102,7 @@ DATABASES = {
 
 CSRF_TRUSTED_ORIGINS = [
     "https://*.codeinstitute-ide.net/",
-    "https://*.herokuapp.com"
+    "https://*.herokuapp.com",
 ]
 
 # Password validation
@@ -131,6 +135,13 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+    messages.INFO: 'alert-info',
+
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

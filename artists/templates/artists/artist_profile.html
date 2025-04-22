@@ -1,0 +1,72 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="container py-5">
+        <div class="row mb-4">
+            <div class="col-md-4">
+                <img src="{{profile.profile_image.url}}" class="img-fluid rounded"
+                    alt="Artist {{ profile.name }}Profile Picture">
+            </div>
+            <div class="col-md-8">
+                <h1>{{ profile.name }}</h1>
+                <p class="text-muted">Location: {{ profile.location }}</p>
+                <p>{{profile.short_intro}}</p>
+                <p>{{profile.bio}}</p>
+                <p><strong>Email: </strong>{{ profile.email }}</p>
+                <div class="artist-social">
+                    {% if profile.social_facebook %}
+                    <a href="{{profile.social_facebook}}" class="mx-1" target="_blank"><i
+                            class="fab fa-facebook"></i></a>
+                    {% endif %}
+
+                    {% if profile.social_website %}
+                    <a href="{{profile.social_website}}" class="mx-1" target="_blank"><i class="fas fa-globe"></i></a>
+                    {% endif %}
+
+                    {% if profile.social_instagram %}
+                    <a href="{{profile.social_instagram}}" class="mx-1" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    {% endif %}
+
+                </div>
+                {% if request.user.profile.id != profile.id %}
+                <a href="{% url 'create-message' profile.id %}" class="btn btn-secondary mt-4 text-decoration-none">Send
+                    Message</a>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Artworks Section -->
+        <h2>Artworks</h2>
+        <div class="row g-4">
+            {% if profile.artworks_set.all %}
+            {% for artwork in profile.artworks_set.all %}
+            <div class="col-md-4">
+                <div class="card h-100">
+                    <a href="{% url 'artwork' artwork.id %}">
+                        {% if "placeholder" in artwork.featured_image.url  %}
+                        <img src="{% static 'images/default-artwork.webp' %}" class="artwork-thumbnail"
+                            alt="placeholder photo">
+                        {% else %}
+                        <img src="{{ artwork.featured_image.url }}" class="artwork-thumbnail"
+                            alt="{{artwork.title}} Image">
+                        {% endif %}
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ artwork.title }}</h5>
+                        <p class="card-text">{{ artwork.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <div class="col-md-6">
+                <p>You have not added any artworks.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

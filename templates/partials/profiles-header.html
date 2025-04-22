@@ -1,20 +1,24 @@
 <section class="profile-header text-center">
-    <div class="container-fluid">
-        <div class="mb-4 profile-header-content">
-            <h2>CONNECT WITH <span>ARTISTS</span></h2>
-            <h2>FROM AROUND IRELAND</h2>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class=" col-md-6 mx-4 profile-header-content">
+                <h2 class="mt-5">CONNECT WITH <span>ARTISTS</span></h2>
+                <h2>FROM AROUND IRELAND</h2>
+            </div>
         </div>
 
-        <div class="profile-section-search align-self-center">
-            <form class="form" action="#" method="get">
-                <div class="my-3">
-                    <label for="formInput#search"></label>
-                    <input class="input input--text" id="formInput#search" type="text" name="text"
-                        placeholder="Search by artist name" />
-                </div>
-
-                <button class="btn btn-secondary btn-lg" type="submit">Search</button>
-            </form>
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form class="form" action="{% url 'profiles' %}" method="get">
+                    <div class="my-3">
+                        <label for="id_search"></label>
+                        <input class="form-control" id="id_search" type="text" name="search_query"
+                            aria-label="Search Artists by name or location" value="{{search_query}}"
+                            placeholder="Search by artist name or location">
+                    </div>
+                    <button class="btn btn-secondary btn-lg" type="submit">Search</button>
+                </form>
+            </div>
         </div>
     </div>
 </section>

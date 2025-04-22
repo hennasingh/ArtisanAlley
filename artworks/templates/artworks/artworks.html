@@ -47,12 +47,13 @@
                 <h1>Artworks</h1>
             </div>
         </div>
-        <div class="row mt-5 justify-content-center">
+        <div class="row mt-5 g-4 mx-5 justify-content-center">
             {% for artwork in artworks %}
             <!-- Card -->
-            <div class="col-10 col-md-6 col-xl-3 mb-4">
+            <div class="col-md-4">
                 <a href=" {% url 'artwork' artwork.id %}" class="card-link">
                     <div class="card">
+
                         {% if "placeholder" in artwork.featured_image.url %}
                         <img src="{% static 'images/default-artwork.webp' %}" class="card-img-top artwork-image"
                             alt="placeholder photo">
@@ -62,17 +63,14 @@
                         {% endif %}
                         <div class="card-body">
                             <h4 class="card-title text-truncate">{{artwork.title}}</h4>
-                            <h5 class="card-subtitle mb-2 text-body-secondary">By {{artwork.profile_owner.name}}</h5>
-                            <div class="row py-2">
-                                <div class="col">
-                                    <i class="fas fa-map-marker-alt p-1"></i>{{artwork.town|capfirst}},
-                                    {{artwork.county|capfirst}}
-                                </div>
-                            </div>
-                            <div class="row">
-                                <h5><i class="fas fa-euro-sign p-1"></i>{{ artwork.price }}</h5>
-                            </div>
-                            <div class="row">
+                            <h5 class="card-subtitle mb-2 text-muted">By
+                                {{artwork.profile_owner.name}}</h5>
+
+                            <p> <i class="fas fa-map-marker-alt p-1"></i>{{artwork.town|capfirst}},
+                                {{artwork.county|capfirst}}</p>
+                            <h5><i class="fas fa-euro-sign p-1"></i>{{ artwork.price }}</h5>
+                            <small><strong>Medium:</strong>{{artwork.art_medium}}</small>
+                            <div class="row justify-content-center mt-3">
                                 {% for tag in artwork.tags.all %}
                                 <div class="col-3">
                                     <span class="badge text-bg-success p-2 ">
@@ -88,6 +86,7 @@
             {% endfor %}
         </div>
     </div>
+    {% include 'pagination.html' with queryset=artworks custom_range=custom_range %}
 </section>
 
 {% endblock content %}

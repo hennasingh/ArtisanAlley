@@ -5,12 +5,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Lora", serif;
-  font-optical-sizing: auto;
   font-style: normal;
-}
-
-.brand-title {
-  display: inline;
 }
 
 /* General Styles */
@@ -22,7 +17,6 @@ h4,
 h5,
 h6 {
   font-family: "Abril Fatface", serif;
-  font-weight: 400;
   font-style: normal;
 }
 
@@ -33,21 +27,36 @@ h6 {
   box-shadow: 12px 12px 2px 1px #7fb1bc;
 }
 
+.container {
+  width: 90%;
+}
+
 /* Navbar */
 .navbar,
 .navbar-brand .nav-link {
-  font-weight: 600;
   background-color: #4f7077 !important;
-  color: #fff !important;
+}
+
+.brand-title {
+  display: inline;
 }
 
 .login-container a {
   text-decoration: none;
 }
 
+@media screen and (min-width: 1200px) {
+  .navbar,
+  .nav-link,
+  .navbar-brand {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+}
+
 /* Hero section - Artworks Page */
 #hero-image {
-  background-image: url(/static/images/hero-image.webp);
+  background-image: url(/static/images/hero_imageResized.webp);
   background-repeat: no-repeat;
   background-position: left;
   background-size: cover;
@@ -72,8 +81,8 @@ h6 {
 }
 
 .artwork-image {
-  width: 100%;
-  height: 400px;
+  height: 270px;
+  object-fit: contain;
 }
 
 .text-bg-success {
@@ -96,9 +105,7 @@ span > small {
 }
 
 .profile-header {
-  height: 40vh;
-  display: flex;
-  align-items: center;
+  height: 45vh;
   background-color: #7fb1bc;
 }
 
@@ -119,20 +126,27 @@ span > small {
   color: #553f34;
 }
 
-.profile-section__search > .form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
+/* Artist Card Styles */
+.artist-card img {
+  object-fit: cover;
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
 }
 
-.profile-section__search > .form input.input--text {
-  width: 50rem;
+.artist-card {
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+  background-color: #ffffff;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.btn-viewProfile {
-  background-color: #553f34;
-  color: white;
+.artist-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Artist Profile Page*/
@@ -157,10 +171,8 @@ span > small {
   transform: translateX(-50%);
 }
 
-.btn-edit {
-  position: absolute;
-  top: 30%;
-  left: 60%;
+.artist-social i {
+  font-size: 1.4em;
 }
 
 .artwork-thumbnail {
@@ -177,6 +189,12 @@ span > small {
 .user-profile {
   text-decoration: none;
   color: #000;
+}
+
+.carousel-inner img {
+  border-radius: 10px;
+  width: 500px;
+  object-fit: cover;
 }
 
 /* Add Artwork Form*/
@@ -196,9 +214,66 @@ span > small {
   border: 2px solid #e5e7eb;
 }
 
-input[type="checkbox"] {
-  cursor: pointer;
+#id_tags {
   display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  align-items: self-start;
+  margin-left: 2em;
+}
+
+/* Inbox */
+.inbox {
+  height: 90vh;
+}
+
+.messages {
+  list-style: none;
+  padding: 0.5rem 3rem;
+  border: 2px solid #7fb1bc;
+  border-radius: 0.7rem;
+}
+
+.message {
+  padding: 1.5rem 0;
+}
+
+.message-unread a span {
+  font-weight: 700;
+  color: #553f34;
+}
+
+.message > a span {
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.message:not(:last-child) {
+  border-bottom: 2px solid #7fb1bc;
+}
+
+.message > a {
+  display: flex;
+  gap: 1rem;
+}
+
+.message-author,
+.message-date {
+  flex-basis: 25%;
+}
+
+.message-subject {
+  flex-basis: 50%;
+}
+
+.message-date {
+  text-align: right;
+}
+
+.message-box {
+  width: 70%;
+  margin: 2rem auto;
+  border: 1px solid #4f7077;
 }
 
 /* Footer */
