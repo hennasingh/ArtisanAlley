@@ -33,6 +33,7 @@ DEBUG = True if os.path.isfile('env.py') else False
 
 ALLOWED_HOSTS = [
     '8000-hennasingh-artisanalley-ln2sa72k1fc.ws.codeinstitute-ide.net',
+    '127.0.0.1',
     '.herokuapp.com'
 ]
 

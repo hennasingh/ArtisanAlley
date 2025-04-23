@@ -2,9 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.db.models import Q
-from .models import Profile, Message
+from .models import Profile
 from .forms import CustomUserCreationForm, ProfileForm, MessageForm
 from .utils import paginateProfiles
 
@@ -26,17 +25,10 @@ def loginUser(request):
         username = request.POST['username']
         password = request.POST['password']
 
-        try:
-            user = User.objects.get(username=username)
-        except User.DoesNotExist:
-            messages.error(request, 'Username does not exist')
-        else:
-            user = authenticate(request, username=username, password=password)
-
+        user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
             messages.success(request, 'You are successfully logged in!')
-
             return redirect('artworks')
         else:
             messages.error(request, 'Username OR password is incorrect')
