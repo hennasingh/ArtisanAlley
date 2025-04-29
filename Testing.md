@@ -162,6 +162,15 @@ Testing was performed on:
 | Edit-Artwork   | Click on Edit Artwork on Account Page                 | Opens Artwork forms pre-populated fields            | Pass      |
 | Delete-Artwork | Click on Delete Artwork on Account Page               | Shows a confirmation message to delele              | Pass      |
 
+
+### Tests on Round 2
+| Section        | Test Action                                           | Expected Result                                     | Pass/Fail |
+| -------------- | ----------------------------------------------------- | --------------------------------------------------- | --------- |
+| Register | Create a new account with new credentials | Redirects to Profile page | Pass |
+| Login | Login with case-sensitive user credentials | Opens Home page | Pass |
+|       | Login with incorrect credentials | Shows an error message - incorrect username password | Pass |
+
+
 ## Struggles, Learnings and Bugs
 
 This project was a little struggle to bring to completion. I had a great experience learning on Django and discovered UX/UI are not my favorite topics.
