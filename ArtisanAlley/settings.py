@@ -98,7 +98,10 @@ WSGI_APPLICATION = 'ArtisanAlley.wsgi.application'
 #     }
 # }
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))
+    'default': dj_database_url.parse(os.environ.get("DATABASE_URL")),
+    'OPTIONS': {
+        'options': '-c search_path=artisan_alley'
+    }
 }
 
 CSRF_TRUSTED_ORIGINS = [
